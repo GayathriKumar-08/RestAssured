@@ -27,7 +27,23 @@ public class Gettesting {
 		statusCode(200).
 		log().all();			            
 	}
-
+	@Test
+	public void test_001()
+	{
+		given().
+		header("Content-Type","application/json").
+		when().
+		queryParam("page", 2).
+		get("https://reqres.in/api/user").
+		then().
+		assertThat().
+		body("page",equalTo(2)).
+		body("per_page",equalTo(6)).
+		body("data.id[0]",equalTo(7)).
+		body("data.name[0]",is("sand dollar")).
+		statusCode(200).
+		log().all();			            
+	}
 	@Test
 	public void post_get_Test()
 	{
